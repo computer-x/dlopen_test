@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <dlfcn.h>
 
-//extern int aaa = 0;
+int aaa = 100;
 
 int main()
 {
@@ -19,12 +19,16 @@ int main()
 	return 1;
     }
 
+
+    printf("aaa(before) = %d\n", aaa);
+
     myadd = dlsym(pdlhandle, "add");
     if(0 != pdlerror){
         printf("%s\n", pdlerror);
         return 1;
     }
 
+    printf("aaa(after) = %d\n", aaa);
 
     int a = 19, b = 100;
     int c = myadd(a, b);
