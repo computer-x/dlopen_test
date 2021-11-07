@@ -1,2 +1,10 @@
 # dlopen_test
-can run on linux, but can not run on macOS! it is a problem.
+
+Chinese language：
+工程简介：首先创建共享库a，然后用b调用a，并创建共享库b，最后在c中使用dlopen调用b：
+在c的编译环节，不需要设置环境变量，也不需要设置-L，-l，-I等编译选项；
+在c的执行环节，不需要在环境变量中设置b的路径，但是需要在环境变量中设置a的路径，否则直接段错误；
+我还尝试了dlopen引用b，然后直接使用a的函数，这样也会出现段错误。
+
+存在问题1:在linux上可以运行，但是在macOS上不能运行；
+存在问题2：如何通过dlopen实现外部变量的引用？
